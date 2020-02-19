@@ -29,8 +29,6 @@ def bubble_sort( arr ):
     passes = 1
     # Declare your loop for the value that you will be using to compare adjacent elements
     for i in range(len(arr) - 1):
-        # define the values you will be comparing against/Allows you to manipulate indexes in the loop
-        cur_index = i
         # Runs another loop to compare adjacent elements
         for k in range(len(arr) - 1):
             #Compares adjacent elements 
@@ -44,7 +42,9 @@ def bubble_sort( arr ):
             
 
     return arr
-
+    
+arr5 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
+bubble_sort(arr5)
 
 # STRETCH: implement the Count Sort function below
 def count_sort( arr, maximum=-1 ):

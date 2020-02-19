@@ -3,75 +3,52 @@ import random
 def merge( arrA, arrB ):
     # Elements is declaring how many values will be in the merged array
     elements = len( arrA ) + len( arrB )
-    # this is creating an array with the length of your two arrays combined
+    # empty array to merge the values that are being passed in
     merged_arr = [] 
-    # Compare the elements in arrA and arrB and sort them, returning merged arr
-    # First pass will return lists with len==1 return those as a merged array
-    test_arr = []
-    print(arrA, "A")
-    print(arrB, "B")       
-    # First pass will return lists with len==1 return those as a merged array
+    # Compare the elements in arrA and arrB and sort them, returning merged arr  
+
+    # Loops through both arrays while they each have elements in them and compares
     while len(arrA) > 0 and len(arrB) > 0:
         if arrA[0] < arrB[0]:
             merged_arr.append(arrA[0])
-            arrA.pop(0)
+            del arrA[0]
         else:
             merged_arr.append(arrB[0])
-            arrB.pop(0)
+            del arrB[0]
+    # Loops through arrB while A is empty and compares it againse the values input into merged Arr
     while len(arrA) == 0 and len(arrB) > 0:
         if arrB[0] < merged_arr[0]:
             merged_arr.insert(0, arrB[0])
-            arrB.pop(0)
+            del arrB[0]
         else:
             merged_arr.append(arrB[0])
-            arrB.pop(0)
+            del arrB[0]
+    # Loops through arrA while B is empty and compares it againse the values input into merged Arr
     while len(arrB) == 0 and len(arrA) > 0:
         if arrA[0] < merged_arr[0]:
             merged_arr.insert(0, arrA[0])
-            arrA.pop(0)
+            del arrA[0]
         else:
             merged_arr.append(arrA[0])
-            arrA.pop(0)
-        
-
-        
-        
-        
-        
-    
-        
-
-
-
-
-        # else:
-        #     if merged_arr[0] < arrB[0]:
-                
-
+            del arrA[0]
 
         
     print(merged_arr, "merged arr before return")
     return merged_arr
 
-arr5 = [1, 5, 8, 4, 2, 9, 6, 0, 3, 7]
-
-# arr5 = random.sample(range(200), 10)
-# print(merge(arr5, arr6))
-# def print_merge(arrA, arrB):
-#     print("A", arrA)
-#     print("B", arrB)
-    
-
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
+    # Base case to check if the arr is a single element or empty
     if len(arr) < 2:
         return arr
 
+    # splits the array indefinitely, cancels when it hits base case
     middle = len(arr)//2
     right = arr[0 : middle]
     left = arr[middle:]
 
+    # calls the merge_sort recursively passing in the arrays returned from merge_sort once it hits len 1
     merged_arr = merge(merge_sort(right), merge_sort(left))
     return merged_arr
     
